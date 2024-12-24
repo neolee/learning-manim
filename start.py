@@ -16,15 +16,17 @@ class SquareToCircle(Scene):
 
 class Anagram(Scene):
     def construct(self):
-        # source = Text("two eleven", height=1)
-        # target = Text("one twelve", height=1)
-        source = Text("two eleven", font="Consolas", font_size=90)
-        target = Text("one twelve", font="Consolas", font_size=90)
+        # source = Text("two eleven", font="Consolas", font_size=90)
+        # target = Text("one twelve", font="Consolas", font_size=90)
+        source = Text("two eleven", height=1)
+        target = Text("one twelve", height=1)
+        saved_source = source.copy()
 
         self.play(Write(source))
         self.wait()
-        kw = {"run_time": 3, "path_arc": PI / 2}
+        # kw = dict(run_time=3, path_arc=PI/2)
+        kw = {"run_time": 3, "path_arc": PI/2}
         self.play(TransformMatchingShapes(source, target, **kw))
         self.wait()
-        self.play(TransformMatchingShapes(target, source, **kw))
+        self.play(TransformMatchingShapes(target, saved_source, **kw))
         self.wait()
