@@ -7,7 +7,7 @@ class SquareToCircle(Scene):
         circle.set_fill(PINK, opacity=0.5)  # set color and transparency
 
         square = Square()  # create a square
-        square.rotate(PI / 4)  # rotate a certain amount
+        square.rotate(PI/4)  # rotate a certain amount
 
         self.play(Create(square))  # animate the creation of the square
         self.play(Transform(square, circle))  # interpolate the square into the circle
@@ -21,7 +21,7 @@ class Anagram(Scene):
 
         self.play(Write(source))
         self.wait(0.5)
-        kw = {"run_time": 2, "path_arc": PI / 2}
+        kw = {"run_time": 2, "path_arc": PI/2}
         self.play(TransformMatchingShapes(source, target, **kw))
         self.wait(0.5)
         self.play(TransformMatchingShapes(target, source, **kw))

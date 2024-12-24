@@ -1,5 +1,6 @@
 from manimlib import * # type: ignore
 
+
 class Triangle(Scene):
     def construct(self):
         axes = Axes(
@@ -32,6 +33,7 @@ class Triangle(Scene):
         self.play(ApplyMethod(triangle.stretch, 0.5, 0), run_time=2)
 
         self.wait()
+
 
 class Coordinate(Scene):
     def construct(self):
@@ -110,6 +112,7 @@ class Coordinate(Scene):
 
         # other coordinate systems you can play around with include
         # ThreeDAxes, NumberPlane, and ComplexPlane.
+
 
 class FunctionGraph(Scene):
     def construct(self):

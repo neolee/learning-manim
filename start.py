@@ -1,5 +1,6 @@
 from manimlib import * # type: ignore
 
+
 class SquareToCircle(Scene):
     def construct(self):
         circle = Circle()
@@ -11,6 +12,7 @@ class SquareToCircle(Scene):
         self.wait()
         self.play(ReplacementTransform(square, circle))
         self.wait()
+
 
 class Anagram(Scene):
     def construct(self):
