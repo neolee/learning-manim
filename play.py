@@ -1,26 +1,28 @@
-import numpy as np
-import matplotlib.pyplot as plt
+# use turtle lib to draw a logarithmic spiral
+import turtle
+import math
 
-def mandelbrot(c, max_iter):
-    z = 0
-    n = 0
-    while abs(z) <= 2 and n < max_iter:
-        z = z*z + c
-        n += 1
-    return n
+# set up the screen
+screen = turtle.Screen()
+screen.bgcolor("black")
 
-def mandelbrot_set(xmin, xmax, ymin, ymax, width, height, max_iter):
-    r1 = np.linspace(xmin, xmax, width)
-    r2 = np.linspace(ymin, ymax, height)
-    return (r1, r2, np.array([[mandelbrot(complex(r, i), max_iter) for r in r1] for i in r2]))
+# create a turtle named "spiral"
+spiral = turtle.Turtle()
+spiral.speed(0)
+spiral.color("white")
 
-def plot_mandelbrot(xmin, xmax, ymin, ymax, width=800, height=800, max_iter=256):
-    _, _, mandelbrot_array = mandelbrot_set(xmin, xmax, ymin, ymax, width, height, max_iter)
-    plt.imshow(mandelbrot_array.T, extent=[xmin, xmax, ymin, ymax], cmap='hot') # type: ignore
-    plt.colorbar()
-    plt.title("Mandelbrot Set")
-    plt.xlabel("Re")
-    plt.ylabel("Im")
-    plt.show()
+# parameters for the logarithmic spiral
+a = 5        # starting radius
+b = 0.1      # growth factor
 
-plot_mandelbrot(-2.0, 1.0, -1.5, 1.5)
+# draw the logarithmic spiral
+for i in range(250):
+    angle = i * 4          # incremental angle in degrees
+    radian = math.radians(angle)  # convert angle to radians
+    x = a * math.exp(b * radian) * math.cos(radian)
+    y = a * math.exp(b * radian) * math.sin(radian)
+    spiral.goto(x, y)
+
+# hide the turtle and display the window
+spiral.hideturtle()
+screen.mainloop()
